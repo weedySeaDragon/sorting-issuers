@@ -1,0 +1,49 @@
+<%= form_with(model: lodge, local: true) do |form| %>
+  <% if lodge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lodge.errors.count, "error") %> prohibited this lodge from being saved:</h2>
+
+      <ul>
+      <% lodge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :designator %>
+    <%= form.text_field :designator, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :number %>
+    <%= form.number_field :number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if lodge.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', lodge, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if lodge.persisted? %>
+      <%= link_to "Cancel", lodge, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", lodges_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

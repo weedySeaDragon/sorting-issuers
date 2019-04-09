@@ -1,0 +1,47 @@
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Lodges</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%= link_to new_lodge_path, class: 'btn btn-primary' do %>
+    Add New Lodge
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+        <th>Name</th>
+    
+
+            <th>Nickname</th>
+            <th>Designator</th>
+            <th>Number</th>
+            
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @lodges.each do |lodge| %>
+        <%= content_tag :tr, id: dom_id(lodge), class: dom_class(lodge) do %>
+          
+            <td><%= link_to lodge.name, lodge %></td>
+          
+
+                      <td><%= lodge.nickname %></td>
+                      <td><%= lodge.designator %></td>
+                      <td><%= lodge.number %></td>
+          
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to chapters_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    All Chapters
+  <% end %>
+  <%= link_to edit_chapter_path(@chapter), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show chapter</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Parent:</dt>
+  <dd><%= @chapter.parent %></dd>
+
+  <dt>Name:</dt>
+  <dd><%= @chapter.name %></dd>
+
+  <dt>Designator:</dt>
+  <dd><%= @chapter.designator %></dd>
+
+  <dt>Number:</dt>
+  <dd><%= @chapter.number %></dd>
+
+</dl>

@@ -1,0 +1,49 @@
+<%= form_with(model: chapter, local: true) do |form| %>
+  <% if chapter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
+
+      <ul>
+      <% chapter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :parent_id %>
+    <%= form.text_field :parent_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :designator %>
+    <%= form.text_field :designator, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :number %>
+    <%= form.number_field :number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if chapter.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', chapter, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if chapter.persisted? %>
+      <%= link_to "Cancel", chapter, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", chapters_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
